@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 const config = require('./config');
 
-const connect = () => mongoose.connect(
+console.log(config.mongodbString);
+
+const createConnection = () => mongoose.createConnection(
     config.mongodbString,
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    (err) => {
-        if (err) {
-            console.log('Could not connect to db.');
-        } else {
-            console.log('Connected to db.')
-        }
-    }
+    // { useNewUrlParser: true, useUnifiedTopology: true },
+    // (err) => {
+    //     if (err) {
+    //         console.log('Could not connect to db.');
+    //     } else {
+    //         console.log('Connected to db.')
+    //     }
+    // }
 );
 
-module.exports = connect;
+module.exports = createConnection;

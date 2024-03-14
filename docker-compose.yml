@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  overhead-server:
+    build: .
+    image: overhead-server
+    environment:
+      - MONGODB_STRING=mongodb://mongodb-database:27017/overhead-server-dev
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb-database
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - node-network
+  
+  mongodb-database:
+    image: mongo:4.2.1-bionic
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - node-network
+
+volumes:
+  dbdata:
+
+networks:
+  node-network:
+    driver: bridge

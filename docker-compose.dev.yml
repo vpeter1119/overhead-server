@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  overhead-server:
+    container_name: overhead-server-dev
+    command: yarn dev

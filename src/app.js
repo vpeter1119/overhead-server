@@ -7,6 +7,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var mongooseConnect = require('./config/mongoose')();
+mongooseConnect.on('connected', () => console.log('MONGODB: connected'));
+mongooseConnect.on('open', () => console.log('MONGODB: open'));
+mongooseConnect.on('disconnected', () => console.log('MONGODB: disconnected'));
+mongooseConnect.on('reconnected', () => console.log('MONGODB: reconnected'));
+mongooseConnect.on('disconnecting', () => console.log('MONGODB: disconnecting'));
+mongooseConnect.on('close', () => console.log('MONGODB: close'));
 
 // var user = mongoose.model('User', { firstname: 'String', lastname: 'String', username: 'String' });
 
